@@ -21,7 +21,7 @@ osf = library_dependency("openspecfun",
 
     vers = v"0.5.3"
 
-    provides(Sources, URI("https://github.com/JuliaLang/openspecfun/archive/v$vers.zip"), osf)
+    provides(Sources, URI("https://github.com/JuliaLang/openspecfun/archive/v$vers.tar.gz"), osf)
 
     provides(BuildProcess, (@build_steps begin
         GetSources(osf)

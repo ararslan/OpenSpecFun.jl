@@ -9,7 +9,7 @@ else
     error("OpenSpecFun.jl not properly installed. Please run Pkg.build(\"OpenSpecFun\").")
 end
 
-import Base.Math: @horner, @pg_horner
+import Base.Math: @horner, @pg_horner, nan_dom_err
 
 # export
 #     # bessel
@@ -47,7 +47,6 @@ import Base.Math: @horner, @pg_horner
 #     erfinv
 
 const libm = Base.libm_name
-const openspecfun = "libopenspecfun"
 
 for f in ["bessel", "erf"]
     include("$f.jl")

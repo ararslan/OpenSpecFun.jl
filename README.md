@@ -5,3 +5,5 @@
 [![Coveralls](https://coveralls.io/repos/github/ararslan/OpenSpecFun.jl/badge.svg?branch=master)](https://coveralls.io/github/ararslan/OpenSpecFun.jl?branch=master)
 
 A Julia wrapper for the OpenSpecFun library of Bessel, Airy, and error functions of complex arguments.
+
+**NOTE:** This package requires gfortran to build the library and does *not* install gfortran for you!

@@ -2,7 +2,7 @@ __precompile__()
 
 module OpenSpecFun
 
-using Base.Math: @horner, @pg_horner
+import Base.Math: @horner, @pg_horner
 
 deps = joinpath(dirname(@__FILE__), "..", "deps", "deps.jl")
 if isfile(deps)

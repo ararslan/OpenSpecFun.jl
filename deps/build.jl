@@ -31,7 +31,7 @@ osf = library_dependency("openspecfun",
             ChangeDirectory(joinpath(BinDeps.builddir(osf), "openspecfun"))
             FileRule(joinpath(libdir(osf), "libopenspecfun." * BinDeps.shlib_ext), @build_steps begin
                 CreateDirectory(libdir(osf))
-                ChangeDirectory(srcdir(osf))
+                `pwd`
                 `make install`
             end)
         end

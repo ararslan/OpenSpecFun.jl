@@ -10,12 +10,16 @@ notifications:
   email: false
 # (Hopefully) temporary: need gfortran
 before_install:
-  - if [ `uname` = "Linux" ]; then
+  - if command -v gfortran >/dev/null 2>&1; then
+      echo "Hooray, we already have gfortran";
+    elif [ `uname` = "Linux" ]; then
       sudo apt-get update;
       sudo apt-get install gfortran;
     elif [ `uname` = "Darwin" ]; then
       brew update;
+      brew unlink gcc;
       brew install gcc;
+      brew link gcc;
     fi
 # uncomment the following lines to override the default test script
 #script:

@@ -11,7 +11,7 @@ else
     error("OpenSpecFun.jl not properly installed. Please run Pkg.build(\"OpenSpecFun\").")
 end
 
-for f in ["bessel", "erf", "gamma"]
+for f in ["bessel", "erf"]
     include("$f.jl")
 end
 

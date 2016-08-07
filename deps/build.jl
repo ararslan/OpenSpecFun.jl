@@ -5,10 +5,10 @@ using BinDeps
 osf = library_dependency("openspecfun",
                          aliases=["libopenspecfun", "libopenspecfun.1", "libopenspecfun.1.3"])
 
-if is_apple()
-    using Homebrew
-    provides(Homebrew.HB, "ararslan/pints/openspecfun", osf, os=:Darwin)
-else
+# if is_apple()
+#     using Homebrew
+#     provides(Homebrew.HB, "ararslan/pints/openspecfun", osf, os=:Darwin)
+# else
     if isdir(srcdir(osf))
         rm(srcdir(osf), recursive=true)
         mkdir(srcdir(osf))
@@ -35,6 +35,6 @@ else
             end)
         end
     end), osf)
-end
+# end
 
 @BinDeps.install Dict(:openspecfun => :openspecfun)

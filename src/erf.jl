@@ -17,6 +17,19 @@ for f in (:erfcx, :erfi, :Dawson)
         @vectorize_1arg Number $fname
     end
 end
+# functions with no domain error
+for f in (:erf, :erfc)
+    @eval begin
+        ($f)(x::Float64) = ccall(($(string(f)),libm), Float64, (Float64,), x)
+        ($f)(x::Float32) = ccall(($(string(f,"f")),libm), Float32, (Float32,), x)
+        ($f)(x::Real) = ($f)(float(x))
+        # fallback definitions to prevent infinite loop from $f(x::Real) def above
+        ($f)(x::AbstractFloat) = throw(ArgumentError("$f not implemented for $(typeof(x))"))
+        ($f)(a::Float16) = Float16($f(Float32(a)))
+        ($f)(a::Complex32) = Complex32($f(Complex64(a)))
+        @vectorize_1arg Number $f
+    end
+end
 
 # Compute the inverse of the error function: erf(erfinv(x)) == x,
 # using the rational approximants tabulated in:

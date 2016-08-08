@@ -299,8 +299,6 @@ this definition is equivalent to the Hurwitz zeta function
 ``\\sum_{k=0}^\\infty (k+z)^{-s}``.   For ``z=1``, it yields
 the Riemann zeta function ``\\zeta(s)``.
 """
-zeta(s,z)
-
 function zeta(s::Union{Int,Float64,Complex{Float64}},
               z::Union{Float64,Complex{Float64}})
     ζ = zero(promote_type(typeof(s), typeof(z)))

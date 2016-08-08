@@ -9,7 +9,7 @@ else
     error("OpenSpecFun.jl not properly installed. Please run Pkg.build(\"OpenSpecFun\").")
 end
 
-import Base.Math: @horner, @pg_horner, nan_dom_err
+import Base.Math: @horner, nan_dom_err
 
 # export
 #     # bessel

@@ -24,6 +24,11 @@ function gamma(n::Union{Int8,UInt8,Int16,UInt16,Int32,UInt32,Int64,UInt64})
     @inbounds return Float64(_fact_table64[n-1])
 end
 
+lgamma(x::Float64) = nan_dom_err(ccall((:lgamma, libm), Float64, (Float64,), x), x)
+lgamma(x::Float32) = nan_dom_err(ccall((:lgammaf, libm), Float32, (Float32,), x), x)
+lgamma(x::Real) = lgamma(float(x))
+@vectorize_1arg Number lgamma
+
 function lgamma_r(x::Float64)
     signp = Array{Int32}(1)
     y = ccall((:lgamma_r,libm),  Float64, (Float64, Ptr{Int32}), x, signp)

@@ -248,7 +248,7 @@ end
 end
 
 # SF.beta, SF.lbeta
-@testset "SF.beta" begin
+@testset "beta, lbeta" begin
     @test SF.beta(3/2,7/2) ≈ 5π/128
     @test SF.beta(3,5) ≈ 1/105
     @test SF.lbeta(5,4) ≈ log(SF.beta(5,4))
@@ -263,7 +263,7 @@ end
 end
 
 # SF.gamma, SF.lgamma (complex argument)
-@testset "SF.gamma, SF.lgamma" begin
+@testset "gamma, lgamma" begin
     if Base.Math.libm == "libopenlibm"
         @test SF.gamma(Float64[1:25;]) == SF.gamma(1:25)
     else
@@ -286,7 +286,7 @@ end
 end
 
 # SF.digamma
-@testset "SF.digamma" begin
+@testset "digamma" begin
     for elty in (Float32, Float64)
         @test SF.digamma(convert(elty, 9)) ≈ convert(elty, 2.140641477955609996536345)
         @test SF.digamma(convert(elty, 2.5)) ≈ convert(elty, 0.7031566406452431872257)
@@ -324,7 +324,7 @@ end
 end
 
 # SF.trigamma
-@testset "SF.trigamma" begin
+@testset "trigamma" begin
     for elty in (Float32, Float64)
         @test SF.trigamma(convert(elty, 0.1)) ≈ convert(elty, 101.433299150792758817)
         @test SF.trigamma(convert(elty, 1/2)) ≈ convert(elty, π^2/2)
@@ -345,7 +345,7 @@ end
 end
 
 # SF.invdigamma
-@testset "SF.invdigamma" begin
+@testset "invdigamma" begin
     for elty in (Float32, Float64)
         for val in [0.001, 0.01, 0.1, 1.0, 10.0]
             @test abs(SF.invdigamma(SF.digamma(convert(elty, val))) - convert(elty, val)) < 1e-8
@@ -354,7 +354,7 @@ end
     @test abs(SF.invdigamma(2)) == abs(SF.invdigamma(2.))
 end
 
-@testset "SF.polygamma" begin
+@testset "polygamma" begin
     @test SF.polygamma(20, 7.) ≈ -4.644616027240543262561198814998587152547
     @test SF.polygamma(20, Float16(7.)) ≈ -4.644616027240543262561198814998587152547
 
@@ -373,7 +373,7 @@ end
 end
 
 # SF.eta, SF.zeta
-@testset "SF.eta, SF.zeta" begin
+@testset "eta, zeta" begin
     @test SF.eta(1) ≈ log(2)
     @test SF.eta(2) ≈ pi^2/12
     @test SF.eta(Float32(2)) ≈ SF.eta(2)

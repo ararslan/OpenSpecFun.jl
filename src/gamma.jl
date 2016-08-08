@@ -1,5 +1,18 @@
 # This file is a part of Julia. License is MIT: http://julialang.org/license
 
+function angle_restrict_symm(theta)
+    const P1 = 4 * 7.8539812564849853515625e-01
+    const P2 = 4 * 3.7748947079307981766760e-08
+    const P3 = 4 * 2.6951514290790594840552e-15
+
+    y = 2*floor(theta/(2*pi))
+    r = ((theta - y*P1) - y*P2) - y*P3
+    if (r > pi)
+        r -= (2*pi)
+    end
+    return r
+end
+
 gamma(x::Float64) = nan_dom_err(ccall((:tgamma,libm),  Float64, (Float64,), x), x)
 gamma(x::Float32) = nan_dom_err(ccall((:tgammaf,libm),  Float32, (Float32,), x), x)
 

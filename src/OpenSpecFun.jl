@@ -48,7 +48,7 @@ import Base.Math: @horner, @pg_horner, nan_dom_err
 
 const libm = Base.libm_name
 
-for f in ["bessel", "erf"]
+for f in ["bessel", "erf", "gamma"]
     include("$f.jl")
 end
 
